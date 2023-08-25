@@ -2,6 +2,8 @@
 
 La pagina de la AGS es vulnerable a CSRF y XSS, haciendo que un atacante pueda conseguir acceso total a la cuenta de alguien convenciendolo de que abra un link malicioso. La info que puede conseguir es la siguiente: nombre completo, email, fecha de nacimiento, dni, entradas al evento y hash MD5 de la contraseña que se puede llegar a crackear.
 
+Intenté reportarles el problema pero decidieron ignorarlo porque su "entendimiento básico de cyberseguridad es no abrir links randoms". Lo que es verdad pero no suficiente, es irrespondable de la parte de ellos dejar a sus usuarios expuestos, en mi opinion.
+
 ## Tabla de contenidos
 - [Tabla de contenidos](#tabla-de-contenidos)
 - [Vulnerabilidad](#vulnerabilidad)
@@ -44,4 +46,4 @@ Este post de [Porswigger](https://portswigger.net/web-security/csrf/preventing) 
 Mientras los de AGS no arreglen este problema, forma de mitigar este problema que tenemos por ahora es cerrar sesion en la pagina de la AGS y usar unicamente la APP de telefono. La app corre en un navegador propio y los demas navegadores no tienen acceso a sus cookies. **Y no hacer click en links que no sean de confianza.**
 
 ## POC
-Este repo tiene incluido un POC, para correrlo tienen que tener instalado node y typescript. instalan las dependencias con `npm i` y lo ejecutan con `npm run dev`. Cuando entren a `http://localhost:8888` se va a redirigir un par de veces y les va a mostrar info de su cuenta.
+Este repo tiene incluido un POC, para correrlo tienen que tener instalado node y typescript. instalan las dependencias con `npm i` y lo ejecutan con `npm run dev`. Cuando entren a `http://localhost:8888` se va a redirigir un par de veces y les va a mostrar la info de su cuenta.
