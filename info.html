@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mis datos</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mis datos</h1>
+    <p class="hidden">Nombre completo: <span id="name"></span></p>
+    <p class="hidden">Email: <span id="email"></span></p>
+    <p class="hidden">DNI: <span id="dni"></span></p>
+    <p class="hidden">Fecha de nacimiento: <span id="birthday"></span></p>
+    <p class="hidden">Password hash: <span id="password"></span></p>
+    <div id="loading">Cargando datos...</div>
+    <script>
+
+        async function fetchData() {
+            try {
+                // Show the loading screen
+                document.getElementById('loading').style.display = 'block';
+
+                // get PHPSESSID from query string
+                const phpSessionId = window.location.search.split('PHPSESSID=')[1].split(';')[0];
+
+                const response = await fetch(`/mis-datos?PHPSESSID=${phpSessionId}`);
+                const data = await response.json();
+
+                const { name, email, dni, birthday, password } = data;
+
+                // Display the data on the client side
+                document.getElementById('name').textContent = name;
+                document.getElementById('email').textContent = email;
+                document.getElementById('dni').textContent = dni;
+                document.getElementById('birthday').textContent = birthday;
+                document.getElementById('password').textContent = password;
+
+                // Remove the hidden class to display the data
+                document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'));
+
+                // Hide the loading screen
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+
+</html>
