@@ -1,3 +1,6 @@
+# Update
+La vulnerabilidad fue resuelta, pusieron `SameSite` en `Lax`.
+
 # AGS-CSRF-XSS POC
 
 La pagina de la AGS es vulnerable a CSRF y XSS, haciendo que un atacante pueda conseguir acceso total a la cuenta de alguien convenciendolo de que abra un link malicioso. La info que puede conseguir es la siguiente: nombre completo, email, fecha de nacimiento, dni, entradas al evento y hash MD5 de la contraseña que se puede llegar a crackear.
